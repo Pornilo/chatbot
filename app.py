@@ -2,12 +2,15 @@ import streamlit as st
 from openai import OpenAI
 import secret_keys
 
-client = OpenAI(api_key = st.secrets.OpenAI.openai_api_key)
+
+client = OpenAI(api_key = secret_keys.openai_api_key)
+
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
-  {"role": "system", "content": "Piensa como un Ingeniero de software"}
+  {"role": "system", "content": "Piensa como un Desarrollador"}
 ]
+
 
 def communicate():
     messages = st.session_state["messages"]
@@ -24,6 +27,7 @@ def communicate():
 
 
     st.session_state["user_input"] = ""
+
 
 st.title ("Desarrollador AI")
 st.write ("Utilizando la API chatGPT, este chatbot ofrece capacidades conversacionales avanzadas.")
